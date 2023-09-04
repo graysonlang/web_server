@@ -1,15 +1,11 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
-
 # Helper script to stop the Python web server.
 
-# Figure out the directory that contains this script and change to it.
-export SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)
-echo ${SCRIPT_DIR}
-pushd "${SCRIPT_DIR}" > /dev/null
+set -euo pipefail
 
-source web_server.sh
+export SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)
+source "${SCRIPT_DIR}/web_server.sh"
 
 # Check if the server is running.
 if [[ ! -z "${WEB_SERVER_PID}" ]]; then
@@ -18,5 +14,3 @@ if [[ ! -z "${WEB_SERVER_PID}" ]]; then
 else
   echo "Web server (${WEB_SERVER_CMD}) not running."
 fi
-
-popd > /dev/null
