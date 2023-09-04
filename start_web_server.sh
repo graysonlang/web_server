@@ -8,7 +8,7 @@ export SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)
 source "${SCRIPT_DIR}/web_server.sh"
 
 abspath() {
-  echo $(cd "${1}"; pwd -P)
+  echo $(cd "${@}"; pwd -P)
 }
 
 # Check if the server is not running.
